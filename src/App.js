@@ -23,7 +23,7 @@ class App extends Component {
 
   handleSubmit(event) {
     if (this.state.searchItem.length===0) {
-      alert('Please enter a search term');
+      alert('Artist name is empty. Please enter an artist!');
       return;
     }
     this.setState({searching: true, albums: []})
