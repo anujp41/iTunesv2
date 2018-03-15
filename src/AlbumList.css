@@ -1,3 +1,43 @@
+.image {
+  grid-area: image;
+}
+
+.name {
+  grid-area: name;
+}
+
+.price {
+  grid-area: price;
+}
+
+.tracks {
+  grid-area: tracks;
+}
+
+.genre {
+  grid-area: genre;
+}
+
 .album-container {
-  display: grid,
+  width: 65vw;
+  display: inline-grid;
+  grid-template-areas: 
+    'image image name'
+    'image image price'
+    'image image tracks'
+    'image image genre';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  margin: 10px 10px 10px 10px
+}
+
+.album-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  padding: 20px;
+}
+
+.album-container .image {
+  align: left
 }
