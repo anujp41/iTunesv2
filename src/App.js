@@ -46,7 +46,7 @@ class App extends Component {
     const albums = this.state.albums;
     const searching = this.state.searching;
     return (
-      <div className="search">
+      <div className="search" >
         <div className="search-box">
           <h1 className="app-title">Search for albums from your favorite artists on iTunes:</h1>
             <form onSubmit={this.handleSubmit}>
@@ -56,7 +56,7 @@ class App extends Component {
         </div>
         {searching && <h1>Searching!</h1>}
         <div className="list">
-          {albums!==[] && albums.length>0 && <AlbumList albums={albums} />}
+          {albums!==[]  && <AlbumList albums={albums} />}
         </div>
       </div>
     );
