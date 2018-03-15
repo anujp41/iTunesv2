@@ -6,7 +6,7 @@ Please follow the steps below to run this app locally on your machine:
 
 ```
   git clone https://github.com/anujp41/iTunesv2.git
-  cd iTunesv2
+  cd iTunesv2/
   npm install
   npm start
 ```
