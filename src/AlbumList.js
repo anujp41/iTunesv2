@@ -5,8 +5,12 @@ class AlbumList extends Component {
 
   render() {
     const albums = this.props.albums;
+    const num = albums.length;
+    const term = num > 1 ? 'albums' : 'album';
+    const artist = this.props.artist;
     return (
       <div>
+        <h1>{artist} has {num} {term} on iTunes listed below:</h1>
         {albums.map(album =>
           <div className="album-container" key={album.collectionId}>
             <img className="image" src={album.artworkUrl100} alt={album.collectionName}></img>

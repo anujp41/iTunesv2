@@ -13,7 +13,8 @@ class App extends Component {
       searchItem: '',
       searching: false,
       albums: [],
-      numAlbums: null
+      numAlbums: null,
+      artist: ''
     }
   }
 
@@ -28,8 +29,9 @@ class App extends Component {
       return;
     }
     this.setState({searching: true, albums: []})
-    const artist = this.state.searchItem.replace(' ', '+');
-    axios.get(`https://itunes.apple.com/search?term=${artist}&entity=album&limit=200&explicit=No`)
+    const artist = this.state.searchItem;
+    const search = artist.replace(' ', '+');
+    axios.get(`https://itunes.apple.com/search?term=${search}&entity=album&limit=200&explicit=No`)
     .then(result => result.data)
     .then(albums => {
       const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
@@ -42,7 +44,8 @@ class App extends Component {
       this.setState({
         searching: false,
         albums: results,
-        numAlbums: numOfAlbums
+        numAlbums: numOfAlbums,
+        artist
       })
     })
   }
@@ -61,7 +64,7 @@ class App extends Component {
         </div>
         {searching && <h1>Searching!</h1>}
         <div className="list">
-          {albums!==[]  && <AlbumList albums={albums} />}
+          {albums.length>0 && <AlbumList albums={albums} artist={this.state.artist}/>}
         </div>
       </div>
     );
