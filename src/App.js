@@ -34,6 +34,11 @@ class App extends Component {
     .then(albums => {
       const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
       const numOfAlbums = results.length;
+      if (numOfAlbums===0) {
+        alert('Your search did not return any result!');
+        this.setState({ searching: false, searchItem: '' });
+        return;
+      }
       this.setState({
         searching: false,
         albums: results,
