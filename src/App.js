@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import AlbumList from './AlbumList';
 
 class App extends Component {
 
@@ -11,7 +12,8 @@ class App extends Component {
     this.state = {
       searchItem: '',
       searching: false,
-      albums: []
+      albums: [],
+      numAlbums: null
     }
   }
 
@@ -20,32 +22,34 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    this.setState({searching: true})
+    this.setState({searching: true, albums: []})
     const artist = this.state.searchItem.replace(' ', '+');
-    console.log('artist is ', artist)
     event.preventDefault();
-    axios.get(`https://itunes.apple.com/search?term=${artist}&entity=album&limit=200`)
+    axios.get(`https://itunes.apple.com/search?term=${artist}&entity=album&limit=200&explicit=No`)
     .then(result => result.data)
     .then(albums => {
-      this.setState({searching: false})
-      console.log('albums are ', albums)
+      this.setState({
+        searching: false,
+        albums: albums.results,
+        numAlbums: albums.resultCount
+      })
     })
   }
 
   render() {
+    const albums = this.state.albums;
+    const searching = this.state.searching;
     return (
-      <div className="Search">
-        <header className="Search-Box">
-          <h1 className="App-Title">Search for albums from your favorite artists on iTunes:</h1>
+      <div className="search">
+        <header className="search-box">
+          <h1 className="app-title">Search for albums from your favorite artists on iTunes:</h1>
             <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.searchItem} onChange={this.handleChange}/>
             <input type="submit" value="Submit"/>
           </form> 
         </header>
-        <p className="Album-List">
-          <code>Meow!</code>
-        </p>
-        {this.state.searching && <h1>Searching!</h1>}
+        {searching && <h1>Searching!</h1>}
+        {albums!==[] && albums.length>0 && <AlbumList albums={albums} />}
       </div>
     );
   }

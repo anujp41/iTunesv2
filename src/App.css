@@ -1,18 +1,14 @@
-.Search {
+.search {
   text-align: center;
 }
 
-.Search-Box {
+.search-box {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-Title {
+.app-title {
   font-size: 1.5em;
-}
-
-.Album-List {
-  font-size: large;
 }
