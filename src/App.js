@@ -22,6 +22,10 @@ class App extends Component {
   }
 
   handleSubmit(event) {
+    if (this.state.searchItem.length===0) {
+      alert('Please enter a search term');
+      return;
+    }
     this.setState({searching: true, albums: []})
     const artist = this.state.searchItem.replace(' ', '+');
     event.preventDefault();

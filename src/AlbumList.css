@@ -27,17 +27,19 @@
     'image tracks'
     'image genre';
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: #b7d7e8;
   padding: 10px;
-  margin: 10px 10px 10px 10px
+  margin: 10px 10px 10px 10px;
+  height: 17vh
 }
 
 .album-container.image {
-  width: 10vw
+  width: 10vw;
+  margin: auto;
 }
 
 .album-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #daebe8;
   text-align: left;
   padding: 5px;
   width: 55vw
