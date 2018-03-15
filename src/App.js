@@ -34,6 +34,7 @@ class App extends Component {
     axios.get(`https://itunes.apple.com/search?term=${search}&entity=album&limit=200&explicit=No`)
     .then(result => result.data)
     .then(albums => {
+      //filter allows to exclude false positives; so if searching for 'PitBull', this will not list albums for 'Pitbull feat. Rihanna' although it will be returned from iTunes
       const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
       const numOfAlbums = results.length;
       if (numOfAlbums===0) {
