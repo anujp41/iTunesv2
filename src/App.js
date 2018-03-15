@@ -36,11 +36,12 @@ class App extends Component {
     .then(albums => {
       const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
       const numOfAlbums = results.length;
-      console.log('albums are ', results[0])
-      results.forEach(result=> console.log('year ', result.releaseDate))
       if (numOfAlbums===0) {
         alert(`Your search for ${artist} did not return any result!`);
-        this.setState({ searching: false, searchItem: '' });
+        this.setState({ 
+          searching: false,
+          searchItem: '' 
+        });
         return;
       }
       this.setState({

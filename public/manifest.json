@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "iTunesv2",
+  "name": "iTunes API Album Search",
   "icons": [
     {
       "src": "favicon.ico",
