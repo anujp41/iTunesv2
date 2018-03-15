@@ -36,6 +36,8 @@ class App extends Component {
     .then(albums => {
       const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
       const numOfAlbums = results.length;
+      console.log('albums are ', results[0])
+      results.forEach(result=> console.log('year ', result.releaseDate))
       if (numOfAlbums===0) {
         alert(`Your search for ${artist} did not return any result!`);
         this.setState({ searching: false, searchItem: '' });
@@ -54,7 +56,7 @@ class App extends Component {
     const albums = this.state.albums;
     const searching = this.state.searching;
     return (
-      <div className="search" >
+      <div className="search">
         <div className="search-box">
           <h1 className="app-title">Search for albums from your favorite artists on iTunes:</h1>
             <form onSubmit={this.handleSubmit}>

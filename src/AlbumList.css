@@ -49,14 +49,15 @@ input[type=text] {
   padding: 10px;
   border-radius: 15px;
   display: inline-block;
-  font-size: 105%
+  font-size: 105%;
+  text-align: center
 }
 
 input[type=submit] {
   width: 10vw;
   color: white;
   font-size: 105%;
-  background-color: #00A591;
+  background-color: #50d07d;
   border-radius: 15px;
   display: inline-block
 }
