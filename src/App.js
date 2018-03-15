@@ -22,20 +22,22 @@ class App extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     if (this.state.searchItem.length===0) {
-      alert('Artist name is empty. Please enter an artist!');
+      alert('Artist name is empty. Please enter an artist to search!');
       return;
     }
     this.setState({searching: true, albums: []})
     const artist = this.state.searchItem.replace(' ', '+');
-    event.preventDefault();
     axios.get(`https://itunes.apple.com/search?term=${artist}&entity=album&limit=200&explicit=No`)
     .then(result => result.data)
     .then(albums => {
+      const results = albums.results.filter(album => album.artistName.toLowerCase()===this.state.searchItem.toLowerCase());
+      const numOfAlbums = results.length;
       this.setState({
         searching: false,
-        albums: albums.results,
-        numAlbums: albums.resultCount
+        albums: results,
+        numAlbums: numOfAlbums
       })
     })
   }
@@ -45,15 +47,17 @@ class App extends Component {
     const searching = this.state.searching;
     return (
       <div className="search">
-        <header className="search-box">
+        <div className="search-box">
           <h1 className="app-title">Search for albums from your favorite artists on iTunes:</h1>
             <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.searchItem} onChange={this.handleChange}/>
             <input type="submit" value="Submit"/>
           </form> 
-        </header>
+        </div>
         {searching && <h1>Searching!</h1>}
-        {albums!==[] && albums.length>0 && <AlbumList albums={albums} />}
+        <div className="list">
+          {albums!==[] && albums.length>0 && <AlbumList albums={albums} />}
+        </div>
       </div>
     );
   }
