@@ -22,22 +22,23 @@
   width: 65vw;
   display: inline-grid;
   grid-template-areas: 
-    'image image name'
-    'image image price'
-    'image image tracks'
-    'image image genre';
+    'image name'
+    'image price'
+    'image tracks'
+    'image genre';
   grid-gap: 10px;
   background-color: #2196F3;
   padding: 10px;
   margin: 10px 10px 10px 10px
 }
 
+.album-container.image {
+  width: 10vw
+}
+
 .album-container > div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: left;
-  padding: 20px;
-}
-
-.album-container .image {
-  align: left
+  padding: 5px;
+  width: 55vw
 }
